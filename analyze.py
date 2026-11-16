@@ -22,7 +22,9 @@ import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).parent
-DATA, REF, OUT = ROOT / "data", ROOT / "reference", ROOT / "out"
+DATA, OUT = ROOT / "data", ROOT / "out"
+REF = ROOT / "reference" if (ROOT / "reference").is_dir() else ROOT  # works with or without the folder
+GTFS = REF / "ferry_gtfs" if (REF / "ferry_gtfs").is_dir() else REF
 TZ = "America/New_York"
 AFTER = 15     # minutes after a landing counted as "leaving the ferry"
 BEFORE = 20    # minutes before a landing for riders arriving to board
@@ -73,7 +75,7 @@ def main(trip_files):
     arr = observed_events(fp).rename(columns={"stop_id": "landing_id"})
     arr = arr.merge(landings.rename(columns={"stop_id": "landing_id", "stop_name": "landing_name"})[["landing_id", "landing_name"]], on="landing_id", how="left")
     arr["actual"] = local(arr.event)
-    st = pd.read_csv(REF / "ferry_gtfs" / "stop_times.txt", dtype=str)[["trip_id", "stop_id", "arrival_time"]]
+    st = pd.read_csv(GTFS / "stop_times.txt", dtype=str)[["trip_id", "stop_id", "arrival_time"]]
     arr = arr.merge(st.rename(columns={"stop_id": "landing_id", "arrival_time": "sched_time"}), on=["trip_id", "landing_id"], how="left")
     base = pd.to_datetime(arr.start_date, format="%Y%m%d").dt.tz_localize(TZ)
     secs = arr.sched_time.map(lambda t: gtfs_secs(t) if isinstance(t, str) else np.nan)

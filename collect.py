@@ -22,7 +22,7 @@ from google.transit import gtfs_realtime_pb2
 
 ROOT = Path(__file__).parent
 DATA = ROOT / "data"
-REF = ROOT / "reference"
+REF = ROOT / "reference" if (ROOT / "reference").is_dir() else ROOT  # works with or without the folder
 STATE = DATA / "state.json"
 NY = ZoneInfo("America/New_York")
 
