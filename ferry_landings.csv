@@ -1,0 +1,26 @@
+stop_id,stop_name,stop_lat,stop_lon,ferry_routes
+4,Hunters Point South,40.741838,-73.961322,East River
+8,South Williamsburg,40.708743,-73.970224,East River
+11,Atlantic Ave/BBP Pier 6,40.692315,-74.002073,"South Brooklyn, St. George"
+17,East 34th Street,40.743912,-73.970731,"Astoria, East River, Rockaway-Soundview, South Brooklyn"
+18,Greenpoint,40.731365,-73.963617,East River
+19,North Williamsburg,40.720838,-73.964902,East River
+20,Dumbo/Fulton Ferry,40.703652,-73.995671,East River
+23,Bay Ridge,40.639858,-74.038130,St. George
+24,Red Hook/Atlantic Basin,40.680957,-74.013358,South Brooklyn
+25,Roosevelt Island,40.756811,-73.952482,Astoria
+65,Governors Island,40.691412,-74.012327,South Brooklyn
+87,Wall St/Pier 11,40.703161,-74.006144,"Astoria, East River, Rockaway-Soundview, South Brooklyn, St. George"
+88,Rockaway,40.584228,-73.831596,Rockaway-Soundview
+89,Astoria,40.771720,-73.935714,Astoria
+90,Long Island City,40.748420,-73.957725,Astoria
+112,Soundview,40.804202,-73.848703,Rockaway-Soundview
+113,East 90th St,40.777475,-73.942172,"Astoria, Rockaway-Soundview"
+114,Stuyvesant Cove,40.731979,-73.972922,Rockaway-Soundview
+115,Corlears Hook,40.710159,-73.979244,South Brooklyn
+118,Sunset Park/BAT,40.646276,-74.026436,Rockaway-Soundview
+120,Brooklyn Navy Yard,40.701792,-73.973576,Astoria
+136,Battery Park City/Vesey St.,40.715029,-74.017775,St. George
+137,St. George,40.646072,-74.074231,St. George
+138,Midtown West 39th St-Pier 79,40.760323,-74.004075,St. George
+141,Ferry Point Park,40.805455,-73.837305,Rockaway-Soundview
