@@ -208,7 +208,8 @@ def main(trip_files):
         bx["ready"] = ns(bx.actual + pd.to_timedelta(bx.distance_m / WALK_MPS, unit="s"))
         bx = bx.merge(ab[["stop_id", "route_id"]].drop_duplicates(), on="stop_id")
         bx = pd.merge_asof(bx.sort_values("ready"), ab, left_on="ready", right_on="actual_bus",
-                           by=["stop_id", "route_id"], direction="forward")
+                           by=["stop_id", "route_id"], direction="forward",
+                           tolerance=pd.Timedelta(minutes=45))   # blank = no bus seen within 45 min (or a data gap)
         bx["wait_min"] = ((bx.actual_bus - bx.ready).dt.total_seconds() / 60).round(1)
         bx.sort_values(["arrival_id", "wait_min"]).to_csv(OUT / "bus_connection.csv", index=False)
         print(f"bus connection rows: {len(bx)}")
