@@ -204,6 +204,8 @@ def main(trip_files):
         ab = observed_events(bp)
         ab["actual_bus"] = local(ab.event)
         ab = ab[["stop_id", "route_id", "actual_bus"]].sort_values("actual_bus")
+        # drop express commuter buses (QM, BM, BxM, SIM, X), which aren't realistic ferry transfers
+        ab = ab[~ab.route_id.str.upper().str.match(r"^(QM|BM|BXM|SIM|X)\d")]
         bx = arr.drop(columns=["route_id", "trip_id"]).merge(bus_pairs[["landing_id", "stop_id", "stop_name", "distance_m"]], on="landing_id")
         bx["ready"] = ns(bx.actual + pd.to_timedelta(bx.distance_m / WALK_MPS, unit="s"))
         bx = bx.merge(ab[["stop_id", "route_id"]].drop_duplicates(), on="stop_id")
