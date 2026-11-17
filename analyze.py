@@ -53,9 +53,14 @@ def observed_events(df):
     df = df.copy()
     df["event"] = df["arrival"].fillna(df["departure"])
     df = df.dropna(subset=["event"])
+    # NYC Ferry leaves start_date blank; use the New York date of the event instead
+    day = pd.to_datetime(df["event"], unit="s", utc=True).dt.tz_convert(TZ).dt.strftime("%Y%m%d")
+    df["start_date"] = df["start_date"].where(df["start_date"].notna() & (df["start_date"] != ""), day)
+    last_poll = df.polled_at.max()
     df = df[df.polled_at <= df.event + 120]
     df = df.sort_values("polled_at").groupby(["trip_id", "start_date", "stop_id"], as_index=False).last()
-    return df[df.event - df.polled_at <= 600]
+    df = df[df.event - df.polled_at <= 600]
+    return df[df.event <= last_poll]   # boat hadn't arrived yet when collection stopped
 
 
 def gtfs_secs(t):
@@ -73,6 +78,10 @@ def main(trip_files):
     if fp.empty:
         print("no ferry data yet"); return
     arr = observed_events(fp).rename(columns={"stop_id": "landing_id"})
+    # NYC Ferry's live feed leaves route_id blank; take it from the schedule
+    if (GTFS / "trips.txt").exists():
+        rt = pd.read_csv(GTFS / "trips.txt", dtype=str)[["trip_id", "route_id"]].drop_duplicates("trip_id")
+        arr = arr.drop(columns="route_id").merge(rt, on="trip_id", how="left")
     arr = arr.merge(landings.rename(columns={"stop_id": "landing_id", "stop_name": "landing_name"})[["landing_id", "landing_name"]], on="landing_id", how="left")
     arr["actual"] = local(arr.event)
     st = pd.read_csv(GTFS / "stop_times.txt", dtype=str)[["trip_id", "stop_id", "arrival_time"]]
