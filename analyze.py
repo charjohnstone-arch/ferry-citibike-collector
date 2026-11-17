@@ -70,6 +70,7 @@ def gtfs_secs(t):
 
 def main(trip_files):
     OUT.mkdir(exist_ok=True)
+    bike_per = trip_per = bx = None
     landings = pd.read_csv(REF / "ferry_landings.csv", dtype={"stop_id": str})
     pairs = pd.read_csv(REF / "bike_stations_near_ferry.csv", dtype={"landing_id": str, "station_id": str, "short_name": str})
 
@@ -147,6 +148,9 @@ def main(trip_files):
         a.to_csv(OUT / "dock_change.csv", index=False)
 
         per = a.groupby(["arrival_id", "landing_name"], as_index=False)["extra_taken"].sum()
+        tot = lambda v: v.sum(min_count=len(v))   # blank if any station is missing a reading
+        bike_per = a.groupby("arrival_id").agg(bikes_before=("bikes_before", tot), net_change=("net_change", tot),
+                                               extra_bikes_taken=("extra_taken", tot)).round(2).dropna()
         summ = per.groupby("landing_name").agg(arrivals=("arrival_id", "nunique"),
                                                avg_extra_bikes_taken=("extra_taken", "mean")).round(2)
         summ = summ.join(pairs.groupby("landing_name").agg(stations_500m=("station_id", "nunique"),
@@ -192,6 +196,8 @@ def main(trip_files):
                "trips_started_after", "usual_started", "extra_started",
                "trips_ended_before", "usual_ended", "extra_ended"]].to_csv(OUT / "trip_response.csv", index=False)
             print(f"trip response rows: {len(x)}")
+            trip_per = x.groupby("arrival_id").agg(trips_started_after=("trips_started_after", "sum"),
+                                                   extra_trips_started=("extra_started", "sum")).round(2)
         else:
             print("no observed landings fall inside the trip file dates")
 
@@ -215,6 +221,48 @@ def main(trip_files):
         bx["wait_min"] = ((bx.actual_bus - bx.ready).dt.total_seconds() / 60).round(1)
         bx.sort_values(["arrival_id", "wait_min"]).to_csv(OUT / "bus_connection.csv", index=False)
         print(f"bus connection rows: {len(bx)}")
+
+    # 5. One row per landing: how soon a bus came, next to what Citi Bike did
+    if bx is not None and bike_per is not None:
+        nxt = (bx.dropna(subset=["wait_min"]).sort_values("wait_min")
+                 .groupby("arrival_id")[["route_id", "stop_name", "distance_m", "wait_min"]].first()
+                 .rename(columns={"route_id": "next_bus_route", "stop_name": "next_bus_stop",
+                                  "distance_m": "next_bus_walk_m", "wait_min": "next_bus_wait_min"}))
+        comb = arr[["arrival_id", "landing_name", "route_id", "actual"]].set_index("arrival_id")
+        comb = comb.join(nxt).join(bike_per, how="inner")
+        if trip_per is not None:
+            comb = comb.join(trip_per)
+        # the bus feed must have been recorded without a break from the landing until the bus came
+        # (or for 50 min if none came); otherwise a gap in collection could hide or invent a wait
+        polls = np.sort(local(bp.polled_at.drop_duplicates()).values)
+        gap = np.diff(polls) > np.timedelta64(5, "m")
+        g0, g1 = polls[:-1][gap], polls[1:][gap]
+        t = comb.actual.values
+        need = np.where(comb.next_bus_wait_min.notna(),
+                        comb.next_bus_walk_m.fillna(0) / WALK_MPS + comb.next_bus_wait_min.fillna(0) * 60, 50 * 60)
+        end = t + pd.to_timedelta(need, unit="s").values
+        hit = (g0[None, :] < end[:, None]) & (g1[None, :] > t[:, None])
+        comb["bus_data"] = (t >= polls[0]) & (end <= polls[-1]) & ~hit.any(axis=1)
+        bins = [-0.1, 5, 15, 30, 45]
+        labels = ["0-5 min", "5-15 min", "15-30 min", "30-45 min"]
+        comb["bus_within"] = pd.cut(comb.next_bus_wait_min, bins, labels=labels).astype(object)
+        comb.loc[comb.bus_within.isna() & comb.bus_data, "bus_within"] = "none in 45 min"
+        comb.loc[~comb.bus_data, "bus_within"] = "no bus data"
+        comb = comb[comb.bus_within != "no bus data"]
+        comb.reset_index().to_csv(OUT / "landing_bus_bike.csv", index=False)
+        order = labels + ["none in 45 min"]
+        aggs = dict(landings=("extra_bikes_taken", "size"), avg_extra_bikes_taken=("extra_bikes_taken", "mean"),
+                    avg_net_change=("net_change", "mean"))
+        if "extra_trips_started" in comb:
+            aggs["avg_extra_trips_started"] = ("extra_trips_started", "mean")
+        by_all = comb.groupby("bus_within").agg(**aggs).reindex(order).dropna(how="all").round(2)
+        by_all["landings"] = by_all.landings.astype(int)
+        by_all.reset_index().to_csv(OUT / "bus_bike_summary.csv", index=False)
+        by_landing = comb.groupby(["landing_name", "bus_within"]).agg(**aggs).round(2).reset_index()
+        by_landing["bus_within"] = pd.Categorical(by_landing.bus_within, order, ordered=True)
+        by_landing.sort_values(["landing_name", "bus_within"]).to_csv(OUT / "bus_bike_by_landing.csv", index=False)
+        print("\nCiti Bike after a landing, by how soon a bus came (all landings):")
+        print(by_all.to_string())
 
 
 if __name__ == "__main__":
