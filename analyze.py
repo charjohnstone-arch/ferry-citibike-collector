@@ -12,6 +12,10 @@ Outputs (out/):
   landing_summary.csv    one row per landing: arrivals seen, avg extra bikes taken after a landing
   trip_response.csv      (with --trips) trips starting 0-15 min after each landing vs baseline
   bus_connection.csv     (if bus data was collected) wait for the next actual bus after each landing
+  comparison_change.csv  per landing: avg change at near stations vs comparison stations 800 m-1.5 km away
+  comparison_summary.csv the same, averaged by landing
+  landing_bus_bike.csv   per landing: how soon a bus came, next to the Citi Bike change
+  bus_bike_summary.csv / bus_bike_by_landing.csv   Citi Bike change grouped by how soon a bus came
 """
 import argparse
 import glob
@@ -40,7 +44,7 @@ def local(epoch):
 
 
 def load(kind):
-    files = sorted(glob.glob(str(DATA / "*" / f"{kind}.csv")))
+    files = sorted(glob.glob(str(DATA / "*" / f"{kind}.csv")) + glob.glob(str(DATA / "*" / f"{kind}.csv.gz")))
     if not files:
         return pd.DataFrame()
     return pd.concat([pd.read_csv(f, dtype={"stop_id": str, "trip_id": str, "start_date": str,
@@ -100,9 +104,11 @@ def main(trip_files):
     ax = arr.merge(pairs.drop(columns=["landing_name"]), on="landing_id")
 
     # 2. Dock change around each landing, against the usual change at that station and hour
-    bk = load("bike")
+    bk_all = load("bike")
+    if not bk_all.empty:
+        bk_all["t"] = local(bk_all.polled_at)
+    bk = bk_all[bk_all.station_id.isin(set(pairs.station_id))].copy() if not bk_all.empty else bk_all
     if not bk.empty and len(ax):
-        bk["t"] = local(bk.polled_at)
         # minute-by-minute bike counts per station, carried forward between changes
         grid = (bk.sort_values("t").set_index("t").groupby("station_id")["bikes"]
                   .resample("1min").last().groupby(level=0).ffill().reset_index())
@@ -158,6 +164,41 @@ def main(trip_files):
                                                            closest_station_m=("distance_m", "min")))
         summ.reset_index().to_csv(OUT / "landing_summary.csv", index=False)
         print(summ.to_string())
+
+    # 2b. Comparison stations (800 m to 1.5 km from any landing): same 15 minutes, far from the ferry.
+    #     diff_per_station > 0 means bikes left the near stations faster than the comparison stations.
+    cfile = DATA / "comparison_stations.csv"
+    if cfile.exists() and not bk_all.empty and len(arr):
+        comp = pd.read_csv(cfile, dtype={"landing_id": str, "station_id": str})
+        g = bk_all[["station_id", "t", "bikes"]].sort_values("t")
+        first_seen = g.groupby("station_id").t.min()
+        def change(pr):
+            x = arr[["arrival_id", "landing_id", "landing_name", "route_id", "actual"]].merge(pr[["landing_id", "station_id"]], on="landing_id")
+            x = x[x.actual >= x.station_id.map(first_seen)]   # only after the station started being recorded
+            if x.empty:
+                return x.assign(net_change=[])
+            x = pd.merge_asof(x.sort_values("actual"), g.rename(columns={"bikes": "b0"}), left_on="actual", right_on="t",
+                              by="station_id", direction="backward").drop(columns="t")
+            x["t1"] = ns(x.actual + timedelta(minutes=AFTER))
+            x = pd.merge_asof(x.sort_values("t1"), g.rename(columns={"bikes": "b1"}), left_on="t1", right_on="t",
+                              by="station_id", direction="backward").drop(columns=["t", "t1"])
+            return x.assign(net_change=x.b1 - x.b0).dropna(subset=["net_change"])
+        near, far = change(pairs), change(comp)
+        if len(far):
+            keys = ["arrival_id", "landing_name", "route_id", "actual"]
+            nn = near.groupby(keys).agg(near_stations=("station_id", "nunique"), near_avg_change=("net_change", "mean"))
+            ff = far.groupby(keys).agg(comp_stations=("station_id", "nunique"), comp_avg_change=("net_change", "mean"))
+            cc = nn.join(ff, how="inner")
+            cc["diff_per_station"] = cc.comp_avg_change - cc.near_avg_change
+            cc["extra_taken_near"] = cc.diff_per_station * cc.near_stations   # same, scaled to all near stations
+            cc = cc.round(2).reset_index()
+            cc.to_csv(OUT / "comparison_change.csv", index=False)
+            cs = cc.groupby("landing_name").agg(landings=("arrival_id", "nunique"), comp_stations=("comp_stations", "median"),
+                                                avg_diff_per_station=("diff_per_station", "mean"),
+                                                avg_extra_taken_near=("extra_taken_near", "mean")).round(2)
+            cs.reset_index().to_csv(OUT / "comparison_summary.csv", index=False)
+            print("\nNear stations vs comparison stations (positive = more bikes left near the ferry):")
+            print(cs.to_string())
 
     # 3. Citi Bike trip files: actual trips starting right after a landing
     if trip_files and len(ax):
