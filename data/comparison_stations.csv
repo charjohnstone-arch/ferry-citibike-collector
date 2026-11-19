@@ -214,7 +214,7 @@ landing_id,landing_name,station_id,short_name,station_name,capacity,lat,lon,dist
 17,East 34th Street,2af3ecc3-4f43-468a-a7cc-bb4804ee3e7a,6551.11,E 43 St & Madison Ave,56,40.75354681867074,-73.97896572947502,1276
 17,East 34th Street,66dc4b4c-0aca-11e7-82f6-3863bb44ef7c,6398.06,W 37 St & 5 Ave,60,40.75038009,-73.98338988,1286
 17,East 34th Street,66db30e0-0aca-11e7-82f6-3863bb44ef7c,6474.11,E 40 St & 5 Ave,93,40.752062307,-73.9816324043,1290
-17,East 34th Street,632b140c-65de-4f50-9cc2-c001ae011aea,6575.03,E 51 St & 2 Ave,61,40.755293,-73.967641,1292
+17,East 34th Street,632b140c-65de-4f50-9cc2-c001ae011aea,6575.03,E 51 St & 2 Ave,43,40.755293,-73.967641,1292
 17,East 34th Street,66dbc982-0aca-11e7-82f6-3863bb44ef7c,6584.12,E 47 St & Park Ave,81,40.75510267,-73.97498696,1295
 17,East 34th Street,66dc259a-0aca-11e7-82f6-3863bb44ef7c,5971.08,E 20 St & 2 Ave,84,40.73587678,-73.98205027,1307
 17,East 34th Street,66dc6a86-0aca-11e7-82f6-3863bb44ef7c,6131.1,E 24 St & Park Ave S,79,40.74096374,-73.98602213,1329
@@ -302,7 +302,7 @@ landing_id,landing_name,station_id,short_name,station_name,capacity,lat,lon,dist
 90,Long Island City,66dd2786-0aca-11e7-82f6-3863bb44ef7c,6395.01,21 St & 43 Ave,27,40.75052534,-73.94594845,1019
 90,Long Island City,0138452a-b9f4-4aee-80b0-7fae9a122ffe,6608.09,E 54 St & 1 Ave,61,40.756265,-73.964179,1028
 90,Long Island City,1882736243099681438,6278.05,Davis St & Jackson Ave,34,40.745627,-73.945661,1063
-90,Long Island City,632b140c-65de-4f50-9cc2-c001ae011aea,6575.03,E 51 St & 2 Ave,61,40.755293,-73.967641,1132
+90,Long Island City,632b140c-65de-4f50-9cc2-c001ae011aea,6575.03,E 51 St & 2 Ave,43,40.755293,-73.967641,1132
 90,Long Island City,66db32fb-0aca-11e7-82f6-3863bb44ef7c,6498.10,E 47 St & 2 Ave,102,40.75323098,-73.97032517,1189
 90,Long Island City,66dea8ff-0aca-11e7-82f6-3863bb44ef7c,6422.09,E 44 St & 2 Ave,39,40.75118387463277,-73.97138714790344,1191
 90,Long Island City,66dd266a-0aca-11e7-82f6-3863bb44ef7c,6352.01,44 Dr & Jackson Ave,34,40.74718234,-73.9432635,1226
@@ -431,7 +431,7 @@ landing_id,landing_name,station_id,short_name,station_name,capacity,lat,lon,dist
 25,Roosevelt Island,c36cfa58-29fe-4c0c-a14f-41c3463487fd,6462.05,40 Ave & Crescent St,23,40.753599202005596,-73.93795609474182,1275
 25,Roosevelt Island,43f3d3c7-46b0-4812-879d-15afe8804c5f,6806.06,35 Ave & 10 St,26,40.76315481910373,-73.93985509872437,1276
 25,Roosevelt Island,1960020234227886806,6830.04,3 Ave & E 62 St,51,40.76313,-73.96527,1286
-25,Roosevelt Island,632b140c-65de-4f50-9cc2-c001ae011aea,6575.03,E 51 St & 2 Ave,61,40.755293,-73.967641,1288
+25,Roosevelt Island,632b140c-65de-4f50-9cc2-c001ae011aea,6575.03,E 51 St & 2 Ave,43,40.755293,-73.967641,1288
 25,Roosevelt Island,199ea9dd-8f7e-4e05-a730-55edaacd8787,6830.02,E 63 St & 3 Ave,37,40.763954,-73.9646,1293
 25,Roosevelt Island,66dc28bd-0aca-11e7-82f6-3863bb44ef7c,6691.11,E 56 St & 3 Ave,79,40.75934501,-73.96759673,1304
 25,Roosevelt Island,72796825-88b1-43a0-bb6d-2b41d337b1fc,6310.06,27 St & Hunter St,33,40.7485,-73.941275,1321
