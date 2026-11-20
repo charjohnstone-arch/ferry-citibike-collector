@@ -63,7 +63,7 @@ landing_id,landing_name,station_id,short_name,station_name,capacity,lat,lon,dist
 136,Battery Park City/Vesey St.,9b0c2c99-214f-4e15-b476-1626c03a9e4e,5509.02,Washington St & Laight St,63,40.72231,-74.0106,1011
 136,Battery Park City/Vesey St.,66db90f1-0aca-11e7-82f6-3863bb44ef7c,5247.10,Reade St & Broadway,62,40.71450451,-74.00562789,1025
 136,Battery Park City/Vesey St.,66db269c-0aca-11e7-82f6-3863bb44ef7c,5430.08,Franklin St & W Broadway,33,40.71911552,-74.00666661,1041
-136,Battery Park City/Vesey St.,66dc90d5-0aca-11e7-82f6-3863bb44ef7c,5001.08,Little West St & 1 Pl,35,40.70569254,-74.01677685,1042
+136,Battery Park City/Vesey St.,66dc90d5-0aca-11e7-82f6-3863bb44ef7c,5001.08,Little West St & 1 Pl,51,40.70569254,-74.01677685,1042
 136,Battery Park City/Vesey St.,66db7a0d-0aca-11e7-82f6-3863bb44ef7c,5359.11,Leonard St & Church St,46,40.717571,-74.005549,1068
 136,Battery Park City/Vesey St.,66db3898-0aca-11e7-82f6-3863bb44ef7c,5137.10,Spruce St & Nassau St,34,40.71146364,-74.00552427,1106
 136,Battery Park City/Vesey St.,66db402c-0aca-11e7-82f6-3863bb44ef7c,5539.06,Laight St & Hudson St,87,40.72185379,-74.00771779,1138
@@ -540,7 +540,7 @@ landing_id,landing_name,station_id,short_name,station_name,capacity,lat,lon,dist
 87,Wall St/Pier 11,2204160305291212104,5073.08,Greenwich St & Rector St,59,40.708351,-74.013493,847
 87,Wall St/Pier 11,66db79a3-0aca-11e7-82f6-3863bb44ef7c,5175.08,Fulton St & Broadway,49,40.711066,-74.009447,922
 87,Wall St/Pier 11,66db3898-0aca-11e7-82f6-3863bb44ef7c,5137.10,Spruce St & Nassau St,34,40.71146364,-74.00552427,925
-87,Wall St/Pier 11,66dc90d5-0aca-11e7-82f6-3863bb44ef7c,5001.08,Little West St & 1 Pl,35,40.70569254,-74.01677685,939
+87,Wall St/Pier 11,66dc90d5-0aca-11e7-82f6-3863bb44ef7c,5001.08,Little West St & 1 Pl,51,40.70569254,-74.01677685,939
 87,Wall St/Pier 11,66db277a-0aca-11e7-82f6-3863bb44ef7c,5167.06,St James Pl & Pearl St,27,40.71117416,-74.00016545,1024
 87,Wall St/Pier 11,66dbe8d6-0aca-11e7-82f6-3863bb44ef7c,5207.01,Centre St & Chambers St,57,40.71273266,-74.0046073,1072
 87,Wall St/Pier 11,66dc9143-0aca-11e7-82f6-3863bb44ef7c,5128.04,Catherine St & Monroe St,35,40.71117444,-73.99682619,1188
