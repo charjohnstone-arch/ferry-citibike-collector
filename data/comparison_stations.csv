@@ -25,7 +25,7 @@ landing_id,landing_name,station_id,short_name,station_name,capacity,lat,lon,dist
 89,Astoria,b506be9e-45d3-43d1-a262-27d8fa91e974,6989.07,31 St & Astoria Blvd,31,40.7699176,-73.9184057,1471
 89,Astoria,387e2863-83ad-4589-8004-794a7b624801,7152.10,24 Ave & 26 St,19,40.774591,-73.918544,1481
 89,Astoria,66dd427e-0aca-11e7-82f6-3863bb44ef7c,7020.09,1 Ave & E 78 St,57,40.77140426,-73.9535166,1500
-11,Atlantic Ave/BBP Pier 6,78e93937-53d1-4c9b-99ad-0460f908ed2d,4718.08,Pierrepont St & Monroe Pl,23,40.69535693320225,-73.99344027042389,803
+11,Atlantic Ave/BBP Pier 6,78e93937-53d1-4c9b-99ad-0460f908ed2d,4718.08,Pierrepont St & Monroe Pl,24,40.69535693320225,-73.99344027042389,803
 11,Atlantic Ave/BBP Pier 6,66ddeb67-0aca-11e7-82f6-3863bb44ef7c,4455.11,Kane St & Clinton St,27,40.6861758,-73.99645295,831
 11,Atlantic Ave/BBP Pier 6,66ddb7bf-0aca-11e7-82f6-3863bb44ef7c,4677.06,Montague St & Clinton St,49,40.6942715,-73.9923272,850
 11,Atlantic Ave/BBP Pier 6,3d835eaa-a102-42c5-b6c0-2c693b1d0677,4565.07,Schermerhorn St & Court St,59,40.6910363748993,-73.99201065301895,860
@@ -160,7 +160,7 @@ landing_id,landing_name,station_id,short_name,station_name,capacity,lat,lon,dist
 20,Dumbo/Fulton Ferry,cbf76774-1276-4cf8-9442-f00571f1451c,4748.07,Clinton St & Tillary St,34,40.696232971293156,-73.99142056703568,899
 20,Dumbo/Fulton Ferry,66db277a-0aca-11e7-82f6-3863bb44ef7c,5167.06,St James Pl & Pearl St,27,40.71117416,-74.00016545,918
 20,Dumbo/Fulton Ferry,c71cca54-17f6-42bc-ba94-3f5bd9c70197,4968.03,Bridge St & Front St,47,40.702969341552716,-73.98469090461731,929
-20,Dumbo/Fulton Ferry,78e93937-53d1-4c9b-99ad-0460f908ed2d,4718.08,Pierrepont St & Monroe Pl,23,40.69535693320225,-73.99344027042389,941
+20,Dumbo/Fulton Ferry,78e93937-53d1-4c9b-99ad-0460f908ed2d,4718.08,Pierrepont St & Monroe Pl,24,40.69535693320225,-73.99344027042389,941
 20,Dumbo/Fulton Ferry,66db930d-0aca-11e7-82f6-3863bb44ef7c,5159.04,Pike St & Monroe St,27,40.71173107,-73.99193043,952
 20,Dumbo/Fulton Ferry,c38e2cfc-04e6-419c-8bf8-d8713ccf6ea7,4853.06,Bridge St & York St,54,40.70133448066992,-73.98471236228943,959
 20,Dumbo/Fulton Ferry,66db3aa3-0aca-11e7-82f6-3863bb44ef7c,4677.01,Cadman Plaza E & Tillary St,52,40.69597683,-73.99014892,972
@@ -548,7 +548,7 @@ landing_id,landing_name,station_id,short_name,station_name,capacity,lat,lon,dist
 87,Wall St/Pier 11,66db7152-0aca-11e7-82f6-3863bb44ef7c,5238.05,St James Pl & Oliver St,48,40.71307916,-73.99851193,1277
 87,Wall St/Pier 11,66dbf362-0aca-11e7-82f6-3863bb44ef7c,5198.04,Market St & Cherry St,45,40.71076228,-73.99400398,1327
 87,Wall St/Pier 11,66dbe848-0aca-11e7-82f6-3863bb44ef7c,5279.03,Centre St & Worth St,120,40.71494807,-74.00234482,1349
-87,Wall St/Pier 11,78e93937-53d1-4c9b-99ad-0460f908ed2d,4718.08,Pierrepont St & Monroe Pl,23,40.69535693320225,-73.99344027042389,1378
+87,Wall St/Pier 11,78e93937-53d1-4c9b-99ad-0460f908ed2d,4718.08,Pierrepont St & Monroe Pl,24,40.69535693320225,-73.99344027042389,1378
 87,Wall St/Pier 11,cbf76774-1276-4cf8-9442-f00571f1451c,4748.07,Clinton St & Tillary St,34,40.696232971293156,-73.99142056703568,1461
 87,Wall St/Pier 11,1960020540642077008,5311.08,Division St & Bowery,74,40.71419,-73.99673,1461
 87,Wall St/Pier 11,99142ec8-c0e7-47ca-916c-c1097d48e133,5270.09,Market St & Henry St,42,40.71310702305908,-73.99446353316307,1481
