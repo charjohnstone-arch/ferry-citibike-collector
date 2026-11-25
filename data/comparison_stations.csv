@@ -134,7 +134,7 @@ landing_id,landing_name,station_id,short_name,station_name,capacity,lat,lon,dist
 115,Corlears Hook,2263851174204787338,5374.02,Suffolk St & Delancey St,62,40.718301,-73.986507,1093
 115,Corlears Hook,66db6cd4-0aca-11e7-82f6-3863bb44ef7c,5436.09,Ave D & E 3 St,55,40.72082834,-73.97793172,1192
 115,Corlears Hook,66db2f4c-0aca-11e7-82f6-3863bb44ef7c,5476.03,E 2 St & Ave C,84,40.7208736,-73.98085795,1199
-115,Corlears Hook,66db6889-0aca-11e7-82f6-3863bb44ef7c,5270.05,Pike St & E Broadway,34,40.71406667,-73.99293911,1233
+115,Corlears Hook,66db6889-0aca-11e7-82f6-3863bb44ef7c,5270.05,Pike St & E Broadway,33,40.71406667,-73.99293911,1233
 115,Corlears Hook,66dbf362-0aca-11e7-82f6-3863bb44ef7c,5198.04,Market St & Cherry St,45,40.71076228,-73.99400398,1246
 115,Corlears Hook,063e7e78-b810-4a2f-8045-a82a0d69d752,5343.11,Orchard St & Grand St,45,40.717318403855785,-73.99067759513855,1250
 115,Corlears Hook,1960020817312746312,5343.10,Allen St & Hester St,117,40.71606,-73.99191,1253
@@ -172,7 +172,7 @@ landing_id,landing_name,station_id,short_name,station_name,capacity,lat,lon,dist
 20,Dumbo/Fulton Ferry,f8c1c90f-4ec0-44bd-b097-cfafc887744d,4781.05,Nassau St & Duffield St,53,40.698477,-73.98384,1151
 20,Dumbo/Fulton Ferry,1e3a16ff-65ba-4d34-b3c6-37aff44e085a,5230.02,Rutgers St & Henry St,40,40.71332151208186,-73.99009689688683,1173
 20,Dumbo/Fulton Ferry,1960020540642077008,5311.08,Division St & Bowery,74,40.71419,-73.99673,1175
-20,Dumbo/Fulton Ferry,66db6889-0aca-11e7-82f6-3863bb44ef7c,5270.05,Pike St & E Broadway,34,40.71406667,-73.99293911,1181
+20,Dumbo/Fulton Ferry,66db6889-0aca-11e7-82f6-3863bb44ef7c,5270.05,Pike St & E Broadway,33,40.71406667,-73.99293911,1181
 20,Dumbo/Fulton Ferry,66dbebad-0aca-11e7-82f6-3863bb44ef7c,4710.06,Jay St & Tech Pl,3,40.695065,-73.987167,1194
 20,Dumbo/Fulton Ferry,66db3898-0aca-11e7-82f6-3863bb44ef7c,5137.10,Spruce St & Nassau St,34,40.71146364,-74.00552427,1202
 20,Dumbo/Fulton Ferry,66dbe8d6-0aca-11e7-82f6-3863bb44ef7c,5207.01,Centre St & Chambers St,57,40.71273266,-74.0046073,1260
