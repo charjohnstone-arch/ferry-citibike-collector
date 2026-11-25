@@ -45,7 +45,7 @@ landing_id,landing_name,station_id,short_name,station_name,capacity,lat,lon,dist
 11,Atlantic Ave/BBP Pier 6,33840944-aa92-4d91-9de8-d29e5cd0b2d9,4371.01,Warren St & Smith St,33,40.685424009970184,-73.99127773940563,1190
 11,Atlantic Ave/BBP Pier 6,66de0a0a-0aca-11e7-82f6-3863bb44ef7c,4298.05,Degraw St & Smith St,27,40.6829151,-73.99318208,1286
 11,Atlantic Ave/BBP Pier 6,66de4336-0aca-11e7-82f6-3863bb44ef7c,4193.14,1 Pl & Clinton St,34,40.6809591,-73.99905709,1288
-11,Atlantic Ave/BBP Pier 6,66dbebad-0aca-11e7-82f6-3863bb44ef7c,4710.06,Jay St & Tech Pl,44,40.695065,-73.987167,1293
+11,Atlantic Ave/BBP Pier 6,66dbebad-0aca-11e7-82f6-3863bb44ef7c,4710.06,Jay St & Tech Pl,52,40.695065,-73.987167,1293
 11,Atlantic Ave/BBP Pier 6,66db88f5-0aca-11e7-82f6-3863bb44ef7c,4596.09,Lawrence St & Willoughby St,63,40.69236178,-73.98631746,1328
 11,Atlantic Ave/BBP Pier 6,66de5613-0aca-11e7-82f6-3863bb44ef7c,4446.05,Dean St & Hoyt St,77,40.6864442,-73.98759104,1385
 11,Atlantic Ave/BBP Pier 6,66de6346-0aca-11e7-82f6-3863bb44ef7c,4330.09,Hoyt St & Warren St,35,40.6843549,-73.98901629,1413
@@ -110,7 +110,7 @@ landing_id,landing_name,station_id,short_name,station_name,capacity,lat,lon,dist
 120,Brooklyn Navy Yard,66db3f01-0aca-11e7-82f6-3863bb44ef7c,4611.03,Willoughby Ave & Hall St,51,40.69196035,-73.96536851,1294
 120,Brooklyn Navy Yard,66dbc6ae-0aca-11e7-82f6-3863bb44ef7c,4683.02,Emerson Pl & Myrtle Ave,63,40.69363137,-73.96223558,1318
 120,Brooklyn Navy Yard,1861271680294357158,4546.06,DeKalb Ave & S Portland Ave,0,40.68967018552252,-73.97527355121376,1355
-120,Brooklyn Navy Yard,66dbebad-0aca-11e7-82f6-3863bb44ef7c,4710.06,Jay St & Tech Pl,44,40.695065,-73.987167,1368
+120,Brooklyn Navy Yard,66dbebad-0aca-11e7-82f6-3863bb44ef7c,4710.06,Jay St & Tech Pl,52,40.695065,-73.987167,1368
 120,Brooklyn Navy Yard,66dced76-0aca-11e7-82f6-3863bb44ef7c,5125.07,Broadway & Roebling St,27,40.70924826276157,-73.96063148975372,1370
 120,Brooklyn Navy Yard,1ecc9936-ee0c-44b2-baa8-237564c8e4fd,4513.09,Ashland Pl & Dekalb Ave,47,40.690065,-73.978776,1376
 120,Brooklyn Navy Yard,66dbea8d-0aca-11e7-82f6-3863bb44ef7c,4596.05,Duffield St & Willoughby St,48,40.69221589,-73.9842844,1396
@@ -173,7 +173,7 @@ landing_id,landing_name,station_id,short_name,station_name,capacity,lat,lon,dist
 20,Dumbo/Fulton Ferry,1e3a16ff-65ba-4d34-b3c6-37aff44e085a,5230.02,Rutgers St & Henry St,40,40.71332151208186,-73.99009689688683,1173
 20,Dumbo/Fulton Ferry,1960020540642077008,5311.08,Division St & Bowery,74,40.71419,-73.99673,1175
 20,Dumbo/Fulton Ferry,66db6889-0aca-11e7-82f6-3863bb44ef7c,5270.05,Pike St & E Broadway,33,40.71406667,-73.99293911,1181
-20,Dumbo/Fulton Ferry,66dbebad-0aca-11e7-82f6-3863bb44ef7c,4710.06,Jay St & Tech Pl,44,40.695065,-73.987167,1194
+20,Dumbo/Fulton Ferry,66dbebad-0aca-11e7-82f6-3863bb44ef7c,4710.06,Jay St & Tech Pl,52,40.695065,-73.987167,1194
 20,Dumbo/Fulton Ferry,66db3898-0aca-11e7-82f6-3863bb44ef7c,5137.10,Spruce St & Nassau St,34,40.71146364,-74.00552427,1202
 20,Dumbo/Fulton Ferry,66dbe8d6-0aca-11e7-82f6-3863bb44ef7c,5207.01,Centre St & Chambers St,57,40.71273266,-74.0046073,1260
 20,Dumbo/Fulton Ferry,66db6f2e-0aca-11e7-82f6-3863bb44ef7c,5303.08,Canal St & Rutgers St,45,40.71427487,-73.98990025,1277
